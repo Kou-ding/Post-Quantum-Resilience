@@ -52,10 +52,27 @@ Calculating prime numbers can be done in parallel with a quantum computer levera
 
 ### Shor's Algorithm
 This is the algorithm that allows quantum computers to generate prime numbers incredibly fast. 
-
+[video1](https://www.youtube.com/watch?v=lvTqbM5Dq4Q)
 There is a difference between quantum cryptography and quantum resilient cryptography.
 - Quantum Cryptography: is made possible through the use of two quantum computers that securely transfer a key thanks to the the principles of uncertainty and quantum entanglement
 - Quantum resilient cryptography: Makes sure our non-quantum computer encrypted data can't be accumulated and decrypted by quantum computers later.
+
+These:
+- Kyber 
+- Dilithium 
+- Falcon
+
+### Lattice based problems
+The private key pair is closed to perpendicular, likes the unit vectors defining a space in linear algebra. 
+
+The public key vectors are almost parallel requiring many vectors added together to come close to the solution of either:
+- the shortest vector problem
+- or the 
+[video0](https://www.youtube.com/watch?v=_C5dkUiiQnw), [video1](https://www.youtube.com/watch?v=QDdOoYdb748), [video2](https://www.youtube.com/watch?v=K026C5YaB3A)
+
+They are hard problem which can be solved on their own. To make them secure we have to incorporate solving with errors.
+![errors](media/errors1.png)
+
 
 ### Contemporary quantum resistant algorithms
 Real life examples of quantum resistant algorithms include:
