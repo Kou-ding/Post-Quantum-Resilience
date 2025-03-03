@@ -31,5 +31,5 @@ conda env list
 conda deactivate
 
 # Remove an environment
-conda remove --name myenv --all
+conda env remove --name myenv
 ```
