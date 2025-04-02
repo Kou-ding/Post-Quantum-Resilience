@@ -12,12 +12,19 @@ As of August 13, 2024 the Secretary of Commerce approved three Federal Informati
 The private key pair is closed to perpendicular, likes the unit vectors defining a space in linear algebra. 
 
 The public key vectors are almost parallel requiring many vectors added together to come close to the solution of either:
-- the shortest vector problem
-- or the closest vector problem
-[video0](https://www.youtube.com/watch?v=_C5dkUiiQnw), [video1](https://www.youtube.com/watch?v=QDdOoYdb748), [video2](https://www.youtube.com/watch?v=K026C5YaB3A)
+- the shortest vector problem  
+- or the closest vector problem 
 
-They are hard problem which can be solved on their own. To make them secure we have to incorporate solving with errors.
-![errors](media/errors1.png)
+Links: [video0](https://www.youtube.com/watch?v=_C5dkUiiQnw), [video1](https://www.youtube.com/watch?v=QDdOoYdb748), [video2](https://www.youtube.com/watch?v=K026C5YaB3A)
+
+These are hard problems that can, however be solved. To make them secure we have to incorporate solving with errors.  
+A,t: Public key  
+s: Secret key  
+e: Error  
+u:
+v:
+r:
+![errors](../media/lwe.png)
 
 
 ### Contemporary quantum resistant algorithms
@@ -27,12 +34,12 @@ Real life examples of quantum resistant algorithms include:
 - iMessage using **PQ3** (Post-Quantum 3)
     - https://security.apple.com/blog/imessage-pq3/
 
-![PQstatusquo](media/pq3.png)
+![PQstatusquo](../media/pq3.png)
 
 ### Module-Lattice-Based Key-Encapsulation Mechanism Standard
 Here is an overview of the basic key encapsulation mechanism.
 
-![kem](media/kem.png)
+![kem](../media/kem.png)
 
 KeyGen
 - 
