@@ -33,3 +33,8 @@ conda deactivate
 # Remove an environment
 conda env remove --name myenv
 ```
+
+To-do List
+- [] Test the IBM quantum computer API on old shor
+- [] Break RSA using a binary computer
+- [] 
