@@ -1,40 +1,21 @@
 # Post-Quantum-Resilience
 Thoughts on the topic of post-quantum cryptography and the algorithms required to ensure resilience in information systems in a post-quantum world.
 
-### Conda setup
-Installation:
+### Conda + pip setup
+Recreate identical code running conditions:  
 ```bash
-yay -S miniconda3
-```
+# Step 1: Recreate conda environment
+conda env create -f environment.yml
 
-Add the following lines at the ewnd of the ~/.bashrc file:
-```txt
-export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
-```
+# Step 2: Activate the conda env
+conda activate env_name
 
-Commands:
-```bash
-# Create a new conda environment
-conda create --name myenv python=3.8.0
-
-# Activate the new environment
-conda activate myenv
-
-# Install a package in the active environment
-conda install numpy
-
-# List all conda environments
-conda env list
-
-# Deactivate the current environment
-conda deactivate
-
-# Remove an environment
-conda env remove --name myenv
+# Step 3: Install dependencies from requirements txt
+pip install -r requirements.txt
 ```
 
 To-do List
+----------
 - [] Test the IBM quantum computer API on old shor
 - [] Break RSA using a binary computer
 - [] 
