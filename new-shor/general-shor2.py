@@ -23,9 +23,14 @@ Date:
 
 import numpy as np
 from fractions import Fraction
-from qiskit_aer import Aer
+# from qiskit_aer import Aer
 from qiskit import QuantumCircuit, transpile
 from qiskit.circuit.library import QFT
+from qiskit_ibm_runtime import QiskitRuntimeService
+# Set up the Qiskit Runtime service
+service = QiskitRuntimeService(channel='ibm_quantum',
+                               token='qiskit_token')
+import time
 
 def get_mod_exp_circuit(a, N, n_qubits):
     """Creates the modular exponentiation circuit for a^x % N."""
@@ -91,7 +96,8 @@ def get_factors(N):
     if N % 2 == 0:
         return [2, N // 2]
 
-    backend = Aer.get_backend('qasm_simulator')
+    # backend = Aer.get_backend('qasm_simulator')
+    backend = service.backend('ibm_sherbrooke')
 
     candidates = [a for a in range(2, N) if np.gcd(a, N) == 1]
     np.random.shuffle(candidates)
@@ -130,8 +136,11 @@ def get_factors(N):
     return None
 
 if __name__ == "__main__":
-    N = int(input("Enter integer N to factor: "))
+    N = 15 #int(input("Enter integer N to factor: "))
+    time_start = time.time()
     factors = get_factors(N)
+    time_end = time.time()
+    print(f"Time taken: {time_end - time_start} seconds")
     if factors:
         factors = [int(f) for f in factors]
         print(f"Non-trivial factors of {N} are {factors}")
