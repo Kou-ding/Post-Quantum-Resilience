@@ -39,7 +39,7 @@ message^e(mod(n))=2^5(mod(14))=4=cipher
 Key: (11,14)
 cipher^d(mod(n))=4^11(mod(14))=4194304(mod(14))=2=message
 ```
-Calculating prime numbers can be done in parallel with a quantum computer leveraging the quantum property of superposition and this is why RSA wouldn't be sufficient in a post quantum world.
+Calculating prime numbers can be done in parallel with a quantum computer leveraging the quantum property of superposition and this is why RSA wouldn't be sufficient in a post quantum world. [first number list](https://en.wikipedia.org/wiki/List_of_prime_numbers)
 
 ### Shor's Algorithm
 This is the algorithm that allows quantum computers to generate prime numbers incredibly fast. 
