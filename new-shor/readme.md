@@ -1,6 +1,6 @@
 ```bash 
 # Create venvc
-conda create env --name shor2 python 3.13.2
+conda create --name shor2 python 3.13.2
 
 # Activate venv
 conda activate shor2
