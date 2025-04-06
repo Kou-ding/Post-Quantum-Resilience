@@ -48,7 +48,5 @@ There is a difference between quantum cryptography and quantum resilient cryptog
 - Quantum Cryptography: is made possible through the use of two quantum computers that securely transfer a key thanks to the the principles of uncertainty and quantum entanglement
 - Quantum resilient cryptography: Makes sure our non-quantum computer encrypted data can't be accumulated and decrypted by quantum computers later.
 
-These:
-- Kyber 
-- Dilithium 
-- Falcon
+### Limitations
+Shor's implementation isn't feasible as of now April 2025, since the physical qbits that comprise the IBM's quantum computers aare susceptible to noise.
