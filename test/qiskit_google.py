@@ -1,11 +1,3 @@
-"""Install Qiskit."""
-try:
-    import qiskit
-except ImportError:
-    print("installing qiskit...")
-    !pip install qiskit
-    print("installed qiskit.")
-
 """Imports for the notebook."""
 import fractions
 import math
@@ -16,10 +8,19 @@ import sympy
 from typing import Callable, Iterable, List, Optional, Sequence, Union
 
 from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-from qiskit import Aer, execute
+from qiskit.primitives import Sampler
 from qiskit.circuit.library import QFT
 from qiskit.quantum_info import Operator
-from qiskit.visualization import plot_histogram
+
+# For visualization
+try:
+    from qiskit_visualizations import plot_histogram
+except ImportError:
+    try:
+        from qiskit.visualization import plot_histogram
+    except ImportError:
+        plot_histogram = None
+        print("Visualization functions not available")
 
 """Function to compute the elements of Z_n."""
 def multiplicative_group(n: int) -> List[int]:
@@ -225,11 +226,13 @@ circuit = make_order_finding_circuit(x, n)
 print(circuit)
 
 """Function to simulate the order finding circuit."""
-def simulate_order_finding(circuit: QuantumCircuit) -> dict:
+def simulate_order_finding(circuit: QuantumCircuit, shots: int = 8) -> dict:
     """Simulates the order finding circuit and returns the measurement counts."""
-    simulator = Aer.get_backend('qasm_simulator')
-    job = execute(circuit, simulator, shots=8)
-    return job.result().get_counts()
+    # Using Qiskit's primitives-based approach (for latest versions)
+    sampler = Sampler()
+    job = sampler.run(circuit, shots=shots)
+    result = job.result()
+    return result.quasi_dists[0]
 
 """Example of processing the measurement results."""
 def process_measurement(counts: dict, x: int, n: int) -> Optional[int]:
@@ -247,10 +250,10 @@ def process_measurement(counts: dict, x: int, n: int) -> Optional[int]:
     if not counts:
         return None
     
+    # In the primitives-based approach, keys are integers not bit strings
     result = max(counts, key=counts.get)
-    exponent_num_bits = len(result)
-    exponent_as_integer = int(result, 2)
-    eigenphase = float(exponent_as_integer / 2**exponent_num_bits)
+    exponent_num_bits = result.bit_length()
+    eigenphase = float(result / 2**exponent_num_bits)
     
     # Run the continued fractions algorithm to determine f = s / r.
     f = fractions.Fraction.from_float(eigenphase).limit_denominator(n)
@@ -382,20 +385,3 @@ print("Factoring n = pq =", n)
 print("p =", p)
 print("q =", q)
 
-"""Using Qiskit's built-in Shor's algorithm implementation (optional)."""
-try:
-    from qiskit.algorithms import Shor
-    
-    # Using Qiskit's built-in Shor's algorithm implementation
-    print("\nUsing Qiskit's built-in Shor implementation:")
-    
-    # Create a Shor instance
-    shor = Shor()
-    
-    # Run Shor's algorithm for a small number
-    small_n = 15
-    result = shor.factor(small_n)
-    
-    print(f"Factors of {small_n}: {result.factors}")
-except ImportError:
-    print("\nQiskit's algorithms module not available. Skip built-in Shor implementation.")
