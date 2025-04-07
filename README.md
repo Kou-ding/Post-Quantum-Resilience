@@ -17,5 +17,5 @@ pip install -r requirements.txt
 To-do List
 ----------
 - [] Test the IBM quantum computer API on old shor
-- [] Break RSA using a binary computer
-- [] 
+- [x] Break RSA using a binary computer
+- [] Migrate from ibmq to qiskit.service

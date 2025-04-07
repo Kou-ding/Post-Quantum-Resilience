@@ -49,4 +49,4 @@ There is a difference between quantum cryptography and quantum resilient cryptog
 - Quantum resilient cryptography: Makes sure our non-quantum computer encrypted data can't be accumulated and decrypted by quantum computers later.
 
 ### Limitations
-Shor's implementation isn't feasible as of now April 2025, since the physical qbits that comprise the IBM's quantum computers aare susceptible to noise.
+Shor's implementation isn't feasible as of now April 2025, since the physical q-bits that comprise the IBM's quantum computers are susceptible to noise. The physical q-bits these computers feature are very susceptible to noise unlike logical q-bits which are comprised out of multiple physical q-bits and are better equipped to handle noise.
