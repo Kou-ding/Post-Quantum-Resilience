@@ -15,18 +15,22 @@ from qiskit.aqua.algorithms import Shor
 from dotenv import load_dotenv
 import os
 
-# Load .env
-load_dotenv()
-api_token = os.getenv("qiskit_token")
-# print(f"My token is: {api_token}") # Uncomment to check if the token is loaded correctly
+# Select online or offline backend
+chooser = input("Select backend\n"
+                "1. online"
+                "2. offline): ")
+if chooser == "1":
+    # Load .env
+    load_dotenv()
+    api_token = os.getenv("qiskit_token")
+    # print(f"My token is: {api_token}") # Uncomment to check if the token is loaded correctly
 
-# # Uncomment the following lines to try running the code on a real IBMQ device
-# # Enable IBMQ
-# IBMQ.enable_account(api_token)
-# provider = IBMQ.get_provider(hub='ibm-q') # Get the provider for the IBM Quantum Experience
-# backend = provider.get_backend('ibmq_qasm_simulator') # Specifies the quantum device simulator: 'ibmq_qasm_simulator' vs real device 'ibm_sherbrooke'
-
-backend = Aer.get_backend('qasm_simulator')
+    # Enable IBMQ
+    IBMQ.enable_account(api_token)
+    provider = IBMQ.get_provider(hub='ibm-q') # Get the provider for the IBM Quantum Experience
+    backend = provider.get_backend('ibmq_qasm_simulator') # Specifies the quantum device simulator: 'ibmq_qasm_simulator' vs real device 'ibm_sherbrooke'
+elif chooser == "2":
+    backend = Aer.get_backend('qasm_simulator')
 
 print('\n Shor\'s Algorithm')
 print('\n Executing...\n')
