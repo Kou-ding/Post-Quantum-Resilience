@@ -5,31 +5,27 @@ necessary functions on a higher level, as the qiskit version 0.24 was
 able to do through qiskit.aqua.algorithms's Shor class.
 
 Classes:
-    [ClassName]: [Brief description of the class]
+[ClassName]: [Brief description of the class]
 
 Functions:
-    [function_name]: [Brief description of the function]
+[function_name]: [Brief description of the function]
 
 Usage example:
-    [Provide a brief example of how to use the module]
+[Provide a brief example of how to use the module]
 
 Author:
-    [Papadakis Fotis]
+[Papadakis Fotis]
 
 Date:
-    [3/3/2025]
+[3/3/2025]
 
 """
 
 import numpy as np
 from fractions import Fraction
-# from qiskit_aer import Aer
+from qiskit_aer import Aer
 from qiskit import QuantumCircuit, transpile
 from qiskit.circuit.library import QFT
-from qiskit_ibm_runtime import QiskitRuntimeService
-# Set up the Qiskit Runtime service
-service = QiskitRuntimeService(channel='ibm_quantum',
-                               token='qiskit_token')
 import time
 
 def get_mod_exp_circuit(a, N, n_qubits):
@@ -96,8 +92,7 @@ def get_factors(N):
     if N % 2 == 0:
         return [2, N // 2]
 
-    # backend = Aer.get_backend('qasm_simulator')
-    backend = service.backend('ibm_sherbrooke')
+    backend = Aer.get_backend('qasm_simulator')
 
     candidates = [a for a in range(2, N) if np.gcd(a, N) == 1]
     np.random.shuffle(candidates)
